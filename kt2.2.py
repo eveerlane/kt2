@@ -14,23 +14,24 @@ class Graph:
         dist[start] = 0
         visited = [False] * self.n
         
-        for _ in range(self.n):
+        unvisited = [i for i in range(self.n)]
+        
+        while unvisited:
             min_dist = INF
-            u = -1
+            st_point = -1
             
-            for i in range(self.n):
-                if not visited[i] and dist[i] < min_dist:
+            for i in unvisited:
+                if dist[i] < min_dist:
                     min_dist = dist[i]
                     u = i
-            
-            if u == -1 or u == end:
+            if st_point == -1 or st_point == end:
                 break
-                
-            visited[u] = True
             
+            unvisited.remove(u)
+
             for v in range(self.n):
-                if self.matrix[u][v] != 0 and not visited[v]:
-                    new_dist = dist[u] + self.matrix[u][v]
+                if self.matrix[st_point][v] != 0 and v in unvisited:
+                    new_dist = dist[st_point] + self.matrix[u][v]
                     if new_dist < dist[v]:
                         dist[v] = new_dist
         
