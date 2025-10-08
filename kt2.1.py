@@ -36,7 +36,7 @@ class HuffmanTree:
         if self.root:
             self.build_codes(self.root, "")
     
-    def count_frequencies(self):
+    def frequency(self):
         freq = {}
         for char in self.text:
             if char in freq:
@@ -49,7 +49,7 @@ class HuffmanTree:
         if not self.text:
             return None
             
-        freq = self.count_frequencies()
+        freq = self.frequency()
         queue = PriorityQueue()
         
         for char, count in freq.items():
