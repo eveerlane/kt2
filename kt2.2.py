@@ -23,7 +23,7 @@ class Graph:
             for i in unvisited:
                 if dist[i] < min_dist:
                     min_dist = dist[i]
-                    u = i
+                    st_point = i
             if st_point == -1 or st_point == end:
                 break
             
